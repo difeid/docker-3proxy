@@ -1,4 +1,5 @@
 # docker-3proxy
+[![](https://images.microbadger.com/badges/image/difeid/3proxy.svg)](https://microbadger.com/images/difeid/3proxy "Get your own image badge on microbadger.com")
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdifeid%2Fdocker-3proxy.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdifeid%2Fdocker-3proxy?ref=badge_shield)
 
 
