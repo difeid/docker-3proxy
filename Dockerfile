@@ -11,14 +11,20 @@ RUN apk add --no-cache --virtual .build-deps git build-base linux-headers \
     && git -C /usr/src/3proxy checkout tags/$RELEASE \
     && make -C /usr/src/3proxy -f Makefile.Linux \
     && make -C /usr/src/3proxy -f Makefile.Linux install \
+    && mv /usr/local/3proxy/conf/add3proxyuser.sh /usr/local/bin/add3proxyuser.sh \
+    && chmod +x /usr/local/bin/add3proxyuser.sh \
     && rm -r /usr/src/3proxy \
+    && rm /etc/3proxy/3proxy.cfg \
     && apk del .build-deps
 
-COPY ./3proxy.cfg /usr/local/etc/3proxy/.
+COPY ./3proxy.cfg /usr/local/3proxy/conf/.
 COPY ./docker-entrypoint.sh /.
 
-LABEL org.opencontainers.image.authors="Danil Ibragimov <email@danil.contact>" \
-      org.opencontainers.image.ref.name="dhcp/dhcpv4" \
+ARG BUILD_DATE="1970-01-01T00:00:00Z"
+
+LABEL org.opencontainers.image.created="$BUILD_DATE" \
+      org.opencontainers.image.authors="Danil Ibragimov" \
+      org.opencontainers.image.ref.name="difeid/3proxy" \
       org.opencontainers.image.title="3proxy server"
 
 ENV USER=3proxy
